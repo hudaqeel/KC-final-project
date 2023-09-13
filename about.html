@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ <link rel="stylesheet" href="about.css">
+    <title>MY WATER</title>
+</head>
+<body>
+    <style>
+        .ebda{
+position: absolute;
+bottom: -380%;
+left: 580px;
+        }
+    </style>
+    <header>
+        <nav>
+            <h2 class="logo">Welcome</h2>
+    <nav class="navigation">
+ <a href="#">Home</a>
+ <a href="#">About</a>
+            <button class="btnLogin-popup">Login</button>
+            <button id="myButton" class="btnLogin-popup ebda">سجل الآن</button>
+         </nav>
+    </header>
+    <script>
+        // احصل على الزر باستخدام معرفه
+        var myButton = document.getElementById("myButton");
+      
+        // أضف مستمع الحدث للنقر على الزر
+        myButton.addEventListener("click", function() {
+          // توجيه المستخدم إلى الصفحة About
+          window.location.href = "login.html";
+        });
+      </script>
+</body>
+</html>

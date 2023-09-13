@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>MY WATER</title>
+    <link rel="stylesheet" href="weight.css">
+</head>
+<body>
+    
+    
+
+   
+    <br>
+
+   
+	<div class="container">
+      
+        <input type="number" id="numberInput" class="makan4" placeholder="أدخل الوزن" style="width: 300px; margin: bottom 5px;; " >
+		<div class="btn makan5" onclick="calculateWeight()" ><a href="#">احسب</a></div style="width : 100px  margin-top 20px;">
+        
+				
+
+	</div>	
+    <script>
+        // دالة لحساب الوزن وتوجيه المستخدم إلى الصفحة النتيجة
+        function calculateWeight() {
+            var input = document.getElementById("numberInput");
+            var selectedValue = input.value;
+            
+            // التحقق من أن القيمة هي رقم
+            if (!isNaN(selectedValue)) {
+                var result = selectedValue * 35;
+                window.location.href = "result.html?result=" + result;
+            } else {
+                alert("الرجاء إدخال رقمًا صحيحًا.");
+            }
+        }
+    </script>
+
+
+
+  
+
+</body>
+</html>

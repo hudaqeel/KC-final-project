@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <title>MY WATER</title>
+   
+    <style>
+        body {
+            background-color: #fff;
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-image: url(waterpic10.png);
+        }
+        
+        #waterProgress {
+            position: absolute;
+            top: 55%;
+            right: 36%;
+            transform: translate(50% , -50%);
+            width: 200px;
+            height: 200px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        
+        #waterPercentage {
+            position: absolute;
+            top: 34%;
+            left: -185%;
+            transform: translate(-50%, -50%);
+            font-size: 65px;
+            color: black;
+            font-family: sans-serif;
+        }
+        
+        #waterInput {
+            margin-top: 20px;
+            padding: 10px;
+            border-radius: 10%;
+
+            background-color: white ;
+            color: black;
+            width: 30%;
+    display: flex;
+    margin: 0;
+    padding: 10px;
+    font-size: 16px;
+    border: 2px solid darkblue; /* لون الحدود الأزرق */
+    border-radius: 15px;
+    outline: none;
+    transition: border-color 0.3s;
+        }
+        
+        #waterInput::placeholder{
+            color: darkblue;
+        }
+        #updateButton{
+            background-color: darkblue;
+            color: black;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            position: absolute;
+            top: 100px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        #updateButton:hover{
+            background-color: darkblue;
+        }
+        
+
+        *{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: sans-serif;
+}
+header{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 20px 100px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 99;
+}
+.logo{
+    font-size: 2em;
+    color: gray;
+    user-select: none;
+}
+.navigation a {
+    position: relative;
+    font-size: 1.1em;
+    color: darkblue;
+    text-decoration: none;
+    font-weight: 500;
+    margin-left: 40px;
+ }
+ .navigation a::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -6px;
+    width: 100%;
+    height: 3px;
+    background:#2c20d8 ;
+    border-radius: 5px;
+    
+    transform: scaleX(0);
+    transition: transform .5s;
+    }
+    .navigation a:hover:after{
+        transform: scaleX(1);
+    }
+ .navigation .btnLogin-popup {
+    width: 130px;
+    height: 50px;
+    background: transparent;
+    border: 2px solid darkblue ;
+    outline: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 1.1em;
+    color:darkblue ;
+    font-weight: 500;
+    margin-left: 40px;
+    transition: .5s;
+}
+.navigation .btnLogin-popup:hover {
+    background:darkblue ;
+    color: #fff; ;
+    }
+.makan3{
+    position: fixed;
+    bottom: 35% ;
+    left: 53%;
+    transform: translateX(-50%);
+}
+.image1{
+    size: 20px;
+}
+    </style>
+</head>
+<body>
+
+<div id="waterProgress">
+    <p id="waterPercentage">0%</p>
+    <input type="number" id="waterInput" placeholder=" أدخل كمية الماء بالملي لترات" style="width: 300px; margin: bottom 5px;; ">
+   
+    
+    <div id="final"> </div>
+    <header>
+        <nav class="navigation">
+            <button  id="myButton" class="btnLogin-popup makan3" onclick="updateWaterProgress()">تحديث</button>
+        </nav>
+    </header>
+   
+</div>
+
+
+<script>
+    alert(" مرحبًا! لقد وصلت إلى حاسبتك الخاصة بك أدخل كمية المياه التي شربتها اليوم")
+    // استقبال النتيجة من عنوان الصفحة
+    var urlParams = new URLSearchParams(window.location.search);
+    var result = localStorage.getItem("result");
+console.log(result)
+    // عرض النتيجة على الصفحة
+    // document.getElementById("resultDisplay").innerText = result;
+
+    // تحديث شرب المياه وعرض النسبة
+    function updateWaterProgress() {
+        var waterInput = parseFloat(document.getElementById("waterInput").value);
+        var waterNeed = parseFloat(result) ; 
+        
+        if (!isNaN(waterInput) && waterInput >= 0) {
+            var percentage = (waterInput / waterNeed) * 100;
+            document.getElementById("waterPercentage").innerText = percentage.toFixed(2) + "%";
+
+            // تحديث دائرة التحميل
+            
+            if (percentage >= 100) {
+                alert("احسنت! لقد اتممت احتياجك اليومي للماء.");
+            } 
+            } else {
+            alert("الرجاء إدخال كمية صحيحة من المياه.");
+        }
+    }
+    let waterLimit = document.getElementById("resultDisplay").value
+    let waterDrink = document.getElementById("waterInput").value
+
+    let final = (waterDrink/result)*100
+
+document.getElementById("waterPercentage").innerHTML+=`${final}`
+</script>
+</body>
+</html>

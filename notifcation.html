@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>MY WATER</title>
+    <link rel="stylesheet" href="notifcation.css">
+</head>
+<body>
+    <style>
+        body{
+            background-image: url(Beige\ Dark\ Blue\ Orange\ Hand\ Drawn\ Lesson\ Education\ Website.png);
+    background-size: cover;
+background-repeat: no-repeat;
+        }
+ 
+
+    </style>
+    <header>
+<nav class="navigation">
+    <button id="myButton" class="btnLogin-popup makan " onclick="requestNotificationPermission()">تفعيل الإشعارات</button>
+    <button id="myButton" class="btnLogin-popup makan2" onclick="redirectToWaterPage()"  >التالي</button>
+
+
+</nav>
+
+    </header>
+    
+    <script>
+        // دالة لطلب إذن الإشعارات من المستخدم
+        function requestNotificationPermission() {
+            Notification.requestPermission().then(function (permission) {
+                if (permission === "granted") {
+                    sendNotification();
+                }
+            });
+        }
+
+        // دالة لإرسال الإشعار كل ساعة
+        function sendNotification() {
+            setInterval(function () {
+                var notification = new Notification("تذكير", {
+                    body: "حان وقت الاهتمام بصحتك. لا تنس شرب الماء!",
+                });
+            }, 3600000); // تكرار الإشعار كل ساعة (3600000 مللي ثانية)
+
+        }
+
+        function redirectToWaterPage(){
+            window.location.href = "water.html" ;
+        }
+    </script>
+</body>
+</html>
